@@ -1,0 +1,28 @@
+---
+import '../../styles/ben.css';
+import '../../styles/billiejean.css';
+import BillieJeanHero from '../../components/BillieJean/BillieJeanHero';
+import BillieJeanNarrative from '../../components/BillieJean/BillieJeanNarrative';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <title>Michael Jackson — "Billie Jean" (1982) | El Trono del Ritmo</title>
+    <meta name="description" content="Acto II: El Trono del Ritmo. La historia detrás de Billie Jean. Experiencia interactiva audio-reactiva con SonicMotion." />
+    <meta property="og:title" content="Tributo MJ — Billie Jean, 1982" />
+    <meta property="og:description" content="Experiencia web inmersiva. La tecnología Sonic reacciona al bajo icónico de Billie Jean." />
+
+    <link rel="preload" href="/BillieJean/master.mp3" as="audio" type="audio/mpeg" />
+</head>
+<body class="theme-dark">
+    <!-- Navbar rendered by React component (BillieJeanHero includes it) -->
+    <BillieJeanHero client:only="react" />
+    <BillieJeanNarrative client:visible />
+</body>
+</html>

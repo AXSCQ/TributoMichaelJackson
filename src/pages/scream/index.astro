@@ -1,0 +1,25 @@
+---
+import '../../styles/ben.css';
+import '../../styles/scream.css';
+import ScreamHero from '../../components/Scream/ScreamHero';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <title>Michael Jackson — "Scream" (1995) | La Armadura Tecnológica</title>
+    <meta name="description" content="Acto III: La Armadura Tecnológica. El video más caro de la historia. Experiencia web con efectos glitch audio-reactivos." />
+    <meta property="og:title" content="Tributo MJ — Scream, 1995" />
+    <meta property="og:description" content="Cuando suena el grito, la pantalla se rompe digitalmente." />
+
+    <link rel="preload" href="/Scream/master.mp3" as="audio" type="audio/mpeg" />
+</head>
+<body class="theme-dark">
+    <ScreamHero client:only="react" />
+</body>
+</html>

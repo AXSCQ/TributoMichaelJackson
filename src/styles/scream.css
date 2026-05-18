@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Share+Tech+Mono&display=swap');
+
+/* ===== SCREAM — INDUSTRIAL GLITCH THEME ===== */
+
+.scream-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #0a0a0a;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.scream-hero.glitching {
+    animation: scream-shake 0.15s ease-in-out;
+}
+
+/* ──── Texture Layers ──── */
+
+.scream-scanlines {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.15) 2px,
+        rgba(0, 0, 0, 0.15) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.scream-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+    transition: opacity 0.1s ease-out;
+}
+
+/* Chromatic Aberration overlay */
+.scream-chroma {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    mix-blend-mode: screen;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 0, 80, 0.3) 0%,
+        transparent 40%,
+        rgba(0, 255, 200, 0.2) 100%
+    );
+    transition: opacity 0.06s ease-out, transform 0.06s ease-out;
+}
+
+/* Screen fracture overlay */
+.scream-fracture {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.06s ease-out;
+    background:
+        linear-gradient(15deg, transparent 49.5%, rgba(255,255,255,0.06) 49.5%, rgba(255,255,255,0.06) 50.5%, transparent 50.5%),
+        linear-gradient(-25deg, transparent 62%, rgba(255,255,255,0.04) 62%, rgba(255,255,255,0.04) 62.5%, transparent 62.5%),
+        linear-gradient(70deg, transparent 30%, rgba(255,255,255,0.03) 30%, rgba(255,255,255,0.03) 30.4%, transparent 30.4%);
+}
+
+/* Glitch horizontal bars */
+.scream-glitch-bar {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 4;
+    mix-blend-mode: difference;
+}
+
+/* ──── Content ──── */
+
+.scream-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    max-width: 860px;
+    padding: 3rem 2rem;
+    width: 100%;
+}
+
+.scream-act {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: screamFadeIn 0.6s ease 0.2s forwards;
+}
+
+.scream-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(3rem, 9vw, 7rem);
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    transition: transform 0.05s ease-out, filter 0.05s ease-out;
+    opacity: 0;
+    animation: screamFadeIn 0.6s ease 0.4s forwards;
+}
+
+.scream-title-white {
+    color: #ffffff;
+}
+
+.scream-title-accent {
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.7);
+    display: inline-block;
+}
+
+.scream-subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #aaaaaa;
+    margin-bottom: 2.5rem;
+    transition: color 0.08s ease-out;
+    opacity: 0;
+    animation: screamFadeIn 0.6s ease 0.6s forwards;
+}
+
+/* ──── Image ──── */
+
+.scream-image-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: screamFadeIn 0.8s ease 0.8s forwards;
+}
+
+.scream-image {
+    width: clamp(220px, 35vw, 380px);
+    height: auto;
+    object-fit: contain;
+    filter: saturate(0.2) brightness(0.85) contrast(1.2);
+    transition: filter 0.08s ease-out, transform 0.06s ease-out;
+    position: relative;
+    z-index: 1;
+}
+
+/* Ghost image for chromatic aberration effect */
+.scream-image-ghost {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(calc(-50% - 6px));
+    width: clamp(220px, 35vw, 380px);
+    height: auto;
+    object-fit: contain;
+    filter: saturate(0) brightness(0.4);
+    opacity: 0;
+    z-index: 0;
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+.scream-hero.glitching .scream-image-ghost {
+    opacity: 0.4;
+    filter: saturate(2) brightness(0.6) hue-rotate(180deg);
+    transition: none;
+}
+
+/* ──── Stats ──── */
+
+.scream-metadata {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+    opacity: 0;
+    animation: screamFadeIn 0.6s ease 1s forwards;
+}
+
+.scream-meta-item {
+    text-align: center;
+}
+
+.scream-meta-value {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+.scream-meta-label {
+    display: block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 1px;
+    margin-top: 0.3rem;
+    max-width: 140px;
+    line-height: 1.4;
+}
+
+.scream-meta-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ──── Play Button ──── */
+
+.scream-play-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 44px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0;
+    animation: screamFadeIn 0.6s ease 1.2s forwards;
+}
+
+.scream-play-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.05), inset 0 0 20px rgba(255, 255, 255, 0.03);
+}
+
+.scream-play-btn.playing {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 50, 50, 0.6);
+    box-shadow: 0 0 30px rgba(255, 50, 50, 0.15);
+}
+
+.scream-play-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+}
+
+/* ──── Keyframes ──── */
+
+@keyframes screamFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scream-shake {
+    0%   { transform: translate(0,0); }
+    15%  { transform: translate(-6px, 3px); }
+    30%  { transform: translate(6px, -4px); }
+    50%  { transform: translate(-4px, 5px); }
+    70%  { transform: translate(5px, -2px); }
+    85%  { transform: translate(-3px, 3px); }
+    100% { transform: translate(0,0); }
+}
+
+/* ──── Responsive ──── */
+
+@media (max-width: 640px) {
+    .scream-metadata {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .scream-meta-divider {
+        width: 40px;
+        height: 1px;
+    }
+}

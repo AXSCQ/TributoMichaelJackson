@@ -1,17 +1,30 @@
 ---
-
+import '../styles/ben.css';
+import BenHero from '../components/Ben/BenHero';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+
+    <title>Michael Jackson — "Ben" (1972) | La Inocencia Aislada · Tributo Interactivo</title>
+    <meta name="description" content="Acto I: La Inocencia Aislada. Experiencia web audio-reactiva con SonicMotion, SonicFX, SonicScroll y SonicWave. La historia de Ben, 1972." />
+    <meta name="keywords" content="Michael Jackson, Ben, 1972, tributo interactivo, audio reactivo, SonicMotion" />
+
+    <!-- Performance hints -->
+    <link rel="preload" href="/Ben/master.mp3" as="audio" type="audio/mpeg" />
+    <link rel="preload" href="/Ben/bensinfondo.png" as="image" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tributo MJ — Ben, 1972 · La Inocencia Aislada" />
+    <meta property="og:description" content="Una experiencia web inmersiva y audio-reactiva. La tecnología Sonic no se ve, se siente." />
+</head>
+<body>
+    <BenHero client:only="react" />
+</body>
 </html>

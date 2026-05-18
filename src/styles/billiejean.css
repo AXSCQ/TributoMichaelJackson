@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Inter:wght@300;400;500&display=swap');
+
+/* ===== BILLIE JEAN — DARK ELECTRIC THEME ===== */
+
+.bj-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #000000;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+}
+
+/* Subtle grid background */
+.bj-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 100, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 100, 255, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bj-bass-flash {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(0, 100, 255, 0.5) 0%, rgba(200, 0, 255, 0.15) 40%, transparent 70%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.08s ease-out;
+}
+
+.bj-scanline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0,140,255,0.6) 30%, rgba(200,0,255,0.6) 70%, transparent 100%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.1s ease-out;
+}
+
+.bj-kick-line {
+    position: absolute;
+    bottom: 40%;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 140, 255, 0.5), rgba(200, 0, 255, 0.5), transparent);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.06s ease-out, transform 0.06s ease-out;
+}
+
+.bj-electric {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    border-radius: 2px;
+    transition: height 0.08s ease-out, opacity 0.1s ease-out;
+}
+
+.bj-electric-left {
+    left: 6%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 140, 255, 0.9), transparent);
+    box-shadow: 0 0 12px rgba(0, 140, 255, 0.6), 0 0 30px rgba(0, 80, 200, 0.3);
+}
+
+.bj-electric-right {
+    right: 6%;
+    background: linear-gradient(to bottom, transparent, rgba(200, 0, 255, 0.9), transparent);
+    box-shadow: 0 0 12px rgba(200, 0, 255, 0.6), 0 0 30px rgba(150, 0, 200, 0.3);
+}
+
+/* ===== CONTENT ===== */
+
+.bj-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 900px;
+    padding: 3rem 2rem;
+    width: 100%;
+}
+
+.bj-act {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: rgba(0, 140, 255, 0.8);
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: bjFadeUp 0.8s ease 0.2s forwards;
+}
+
+.bj-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    transition: text-shadow 0.1s ease-out, transform 0.1s ease-out;
+    opacity: 0;
+    animation: bjFadeUp 1s ease 0.4s forwards;
+}
+
+.bj-subtitle {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(0, 140, 255, 0.7);
+    margin-bottom: 2.5rem;
+    transition: color 0.1s ease-out;
+    opacity: 0;
+    animation: bjFadeUp 0.8s ease 0.6s forwards;
+}
+
+/* ===== IMAGE ===== */
+
+.bj-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: bjFadeUp 1s ease 0.8s forwards;
+}
+
+.bj-image {
+    width: clamp(200px, 30vw, 320px);
+    height: auto;
+    object-fit: contain;
+    transition: filter 0.1s ease-out, transform 0.1s ease-out;
+    filter: drop-shadow(0 0 20px rgba(0,100,255,0.3));
+}
+
+/* ===== DYNAMIC TILE GRID ===== */
+
+.bj-tile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(0, 140, 255, 0.1);
+    opacity: 0;
+    animation: bjFadeUp 0.8s ease 1s forwards;
+}
+
+.bj-tile {
+    padding: 1.5rem 1.2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 140, 255, 0.08);
+    text-align: left;
+    transition: transform 0.08s ease-out,
+                box-shadow 0.08s ease-out,
+                border-color 0.08s ease-out;
+    cursor: default;
+}
+
+.bj-tile:hover {
+    background: rgba(0, 100, 255, 0.06);
+    border-color: rgba(0, 140, 255, 0.25);
+}
+
+.bj-tile-year {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: rgba(0, 140, 255, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.bj-tile-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+}
+
+.bj-tile-sub {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1.4;
+    font-weight: 300;
+}
+
+/* ===== PLAY BUTTON ===== */
+
+.bj-play-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 40px;
+    border: 1px solid rgba(0, 140, 255, 0.5);
+    border-radius: 0;
+    background: transparent;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: bjFadeUp 0.8s ease 1.2s forwards;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.bj-play-btn:hover {
+    background: rgba(0, 140, 255, 0.15);
+    border-color: rgba(0, 140, 255, 0.9);
+    box-shadow: 0 0 30px rgba(0, 140, 255, 0.3), inset 0 0 20px rgba(0, 100, 255, 0.1);
+    transform: none;
+}
+
+.bj-play-btn.playing {
+    background: rgba(200, 0, 255, 0.15);
+    border-color: rgba(200, 0, 255, 0.8);
+    box-shadow: 0 0 30px rgba(200, 0, 255, 0.3);
+}
+
+.bj-play-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* ===== NARRATIVE ===== */
+
+.bj-narrative {
+    background: #000;
+    padding: 6rem 2rem;
+    border-top: 1px solid rgba(0, 140, 255, 0.1);
+}
+
+.bj-narrative-title-wrap {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.bj-narrative-label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(0, 140, 255, 0.7);
+    margin-bottom: 0.75rem;
+}
+
+.bj-narrative-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
+.bj-timeline {
+    list-style: none;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.bj-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 140, 255, 0.4), transparent);
+}
+
+.bj-timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.bj-timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.bj-timeline-dot {
+    position: absolute;
+    left: -2.35rem;
+    top: 0.4rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 140, 255, 0.9);
+    box-shadow: 0 0 12px rgba(0, 140, 255, 0.6);
+    flex-shrink: 0;
+}
+
+.bj-timeline-year {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: rgba(0, 140, 255, 0.8);
+    flex-shrink: 0;
+    padding-top: 0.15rem;
+    min-width: 3.5rem;
+}
+
+.bj-timeline-event {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes bjFadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 640px) {
+    .bj-tile-grid { grid-template-columns: repeat(2, 1fr); }
+    .bj-electric { display: none; }
+}

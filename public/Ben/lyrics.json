@@ -1,0 +1,1165 @@
+{
+  "title": "Ben",
+  "artist": "Michael Jackson",
+  "language": "en",
+  "model": "whisper-small",
+  "generatedAt": "2026-05-05T00:00:00.000Z",
+  "source": "openai-whisper word_timestamps",
+  "words": [
+    {
+      "word": "We",
+      "start": 20.34,
+      "end": 21.74,
+      "confidence": 0.034,
+      "line": 0,
+      "tags": [
+        "key",
+        "hold"
+      ]
+    },
+    {
+      "word": "both",
+      "start": 21.74,
+      "end": 23.14,
+      "confidence": 0.556,
+      "line": 0,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "found",
+      "start": 23.14,
+      "end": 23.82,
+      "confidence": 0.959,
+      "line": 0,
+      "tags": [
+        "key",
+        "emotion"
+      ]
+    },
+    {
+      "word": "what",
+      "start": 23.82,
+      "end": 24.16,
+      "confidence": 0.979,
+      "line": 0,
+      "tags": []
+    },
+    {
+      "word": "we",
+      "start": 24.16,
+      "end": 24.56,
+      "confidence": 0.986,
+      "line": 0,
+      "tags": [
+        "key"
+      ]
+    },
+    {
+      "word": "were",
+      "start": 24.56,
+      "end": 25.04,
+      "confidence": 0.973,
+      "line": 0,
+      "tags": []
+    },
+    {
+      "word": "looking",
+      "start": 25.04,
+      "end": 25.96,
+      "confidence": 0.947,
+      "line": 0,
+      "tags": [
+        "emotion",
+        "hold"
+      ]
+    },
+    {
+      "word": "for",
+      "start": 25.96,
+      "end": 27.54,
+      "confidence": 0.995,
+      "line": 0,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "With",
+      "start": 27.54,
+      "end": 29.12,
+      "confidence": 0.028,
+      "line": 1,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "a",
+      "start": 29.12,
+      "end": 30.32,
+      "confidence": 0.376,
+      "line": 1,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "friend",
+      "start": 30.32,
+      "end": 30.86,
+      "confidence": 0.881,
+      "line": 1,
+      "tags": [
+        "key",
+        "emotion"
+      ]
+    },
+    {
+      "word": "to",
+      "start": 30.86,
+      "end": 31.22,
+      "confidence": 0.867,
+      "line": 1,
+      "tags": []
+    },
+    {
+      "word": "call",
+      "start": 31.22,
+      "end": 31.56,
+      "confidence": 0.362,
+      "line": 1,
+      "tags": []
+    },
+    {
+      "word": "my",
+      "start": 31.56,
+      "end": 32.32,
+      "confidence": 0.867,
+      "line": 1,
+      "tags": []
+    },
+    {
+      "word": "own",
+      "start": 32.32,
+      "end": 33.14,
+      "confidence": 0.934,
+      "line": 1,
+      "tags": []
+    },
+    {
+      "word": "I'll",
+      "start": 33.22,
+      "end": 33.94,
+      "confidence": 0.963,
+      "line": 1,
+      "tags": []
+    },
+    {
+      "word": "never",
+      "start": 33.94,
+      "end": 34.48,
+      "confidence": 0.997,
+      "line": 1,
+      "tags": [
+        "emotion"
+      ]
+    },
+    {
+      "word": "be",
+      "start": 34.48,
+      "end": 35.14,
+      "confidence": 0.995,
+      "line": 1,
+      "tags": []
+    },
+    {
+      "word": "alone",
+      "start": 35.14,
+      "end": 36.4,
+      "confidence": 0.992,
+      "line": 1,
+      "tags": [
+        "key",
+        "emotion",
+        "hold"
+      ]
+    },
+    {
+      "word": "Any",
+      "start": 36.9,
+      "end": 37.52,
+      "confidence": 0.864,
+      "line": 2,
+      "tags": []
+    },
+    {
+      "word": "of",
+      "start": 37.52,
+      "end": 37.86,
+      "confidence": 0.758,
+      "line": 2,
+      "tags": []
+    },
+    {
+      "word": "you",
+      "start": 37.86,
+      "end": 37.86,
+      "confidence": 0.937,
+      "line": 2,
+      "tags": []
+    },
+    {
+      "word": "my",
+      "start": 37.86,
+      "end": 38.26,
+      "confidence": 0.757,
+      "line": 2,
+      "tags": []
+    },
+    {
+      "word": "friend",
+      "start": 38.26,
+      "end": 38.7,
+      "confidence": 0.976,
+      "line": 2,
+      "tags": [
+        "key",
+        "emotion"
+      ]
+    },
+    {
+      "word": "will",
+      "start": 38.7,
+      "end": 39.24,
+      "confidence": 0.697,
+      "line": 2,
+      "tags": []
+    },
+    {
+      "word": "see",
+      "start": 39.24,
+      "end": 39.96,
+      "confidence": 0.995,
+      "line": 2,
+      "tags": []
+    },
+    {
+      "word": "you've",
+      "start": 40.52,
+      "end": 41.22,
+      "confidence": 0.584,
+      "line": 2,
+      "tags": []
+    },
+    {
+      "word": "got",
+      "start": 41.22,
+      "end": 41.44,
+      "confidence": 0.62,
+      "line": 2,
+      "tags": []
+    },
+    {
+      "word": "a",
+      "start": 41.44,
+      "end": 41.76,
+      "confidence": 0.846,
+      "line": 2,
+      "tags": []
+    },
+    {
+      "word": "friend",
+      "start": 41.76,
+      "end": 42.12,
+      "confidence": 0.996,
+      "line": 2,
+      "tags": [
+        "key",
+        "emotion"
+      ]
+    },
+    {
+      "word": "in",
+      "start": 42.12,
+      "end": 42.94,
+      "confidence": 0.959,
+      "line": 2,
+      "tags": []
+    },
+    {
+      "word": "me",
+      "start": 42.94,
+      "end": 43.74,
+      "confidence": 0.768,
+      "line": 2,
+      "tags": []
+    },
+    {
+      "word": "Ben",
+      "start": 49.0,
+      "end": 50.4,
+      "confidence": 0.012,
+      "line": 3,
+      "tags": [
+        "key",
+        "hold"
+      ]
+    },
+    {
+      "word": "you're",
+      "start": 50.92,
+      "end": 51.4,
+      "confidence": 0.956,
+      "line": 3,
+      "tags": []
+    },
+    {
+      "word": "always",
+      "start": 51.4,
+      "end": 52.26,
+      "confidence": 0.988,
+      "line": 3,
+      "tags": []
+    },
+    {
+      "word": "running",
+      "start": 52.26,
+      "end": 52.82,
+      "confidence": 0.989,
+      "line": 3,
+      "tags": []
+    },
+    {
+      "word": "here",
+      "start": 52.82,
+      "end": 53.64,
+      "confidence": 0.977,
+      "line": 3,
+      "tags": []
+    },
+    {
+      "word": "and",
+      "start": 53.64,
+      "end": 54.14,
+      "confidence": 0.987,
+      "line": 3,
+      "tags": []
+    },
+    {
+      "word": "there",
+      "start": 54.14,
+      "end": 55.36,
+      "confidence": 0.958,
+      "line": 3,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "You",
+      "start": 56.7,
+      "end": 57.18,
+      "confidence": 0.923,
+      "line": 4,
+      "tags": []
+    },
+    {
+      "word": "feel",
+      "start": 57.18,
+      "end": 58.3,
+      "confidence": 0.975,
+      "line": 4,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "you're",
+      "start": 58.3,
+      "end": 58.8,
+      "confidence": 0.984,
+      "line": 4,
+      "tags": []
+    },
+    {
+      "word": "not",
+      "start": 58.8,
+      "end": 59.12,
+      "confidence": 0.999,
+      "line": 4,
+      "tags": []
+    },
+    {
+      "word": "wanted",
+      "start": 59.12,
+      "end": 60.04,
+      "confidence": 0.985,
+      "line": 4,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "anywhere",
+      "start": 60.04,
+      "end": 61.56,
+      "confidence": 0.945,
+      "line": 4,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "If",
+      "start": 63.58,
+      "end": 64.56,
+      "confidence": 0.943,
+      "line": 5,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "you",
+      "start": 64.56,
+      "end": 65.34,
+      "confidence": 0.997,
+      "line": 5,
+      "tags": []
+    },
+    {
+      "word": "ever",
+      "start": 65.34,
+      "end": 66.0,
+      "confidence": 0.973,
+      "line": 5,
+      "tags": []
+    },
+    {
+      "word": "look",
+      "start": 66.0,
+      "end": 66.62,
+      "confidence": 0.992,
+      "line": 5,
+      "tags": []
+    },
+    {
+      "word": "behind",
+      "start": 66.62,
+      "end": 67.64,
+      "confidence": 0.997,
+      "line": 5,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "and",
+      "start": 67.64,
+      "end": 68.88,
+      "confidence": 0.852,
+      "line": 5,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "don't",
+      "start": 68.88,
+      "end": 69.26,
+      "confidence": 0.944,
+      "line": 5,
+      "tags": []
+    },
+    {
+      "word": "like",
+      "start": 69.26,
+      "end": 69.64,
+      "confidence": 0.997,
+      "line": 5,
+      "tags": []
+    },
+    {
+      "word": "what",
+      "start": 69.64,
+      "end": 70.04,
+      "confidence": 0.998,
+      "line": 5,
+      "tags": []
+    },
+    {
+      "word": "you",
+      "start": 70.04,
+      "end": 70.62,
+      "confidence": 0.999,
+      "line": 5,
+      "tags": []
+    },
+    {
+      "word": "find",
+      "start": 70.62,
+      "end": 71.5,
+      "confidence": 0.995,
+      "line": 5,
+      "tags": []
+    },
+    {
+      "word": "there's",
+      "start": 71.5,
+      "end": 72.46,
+      "confidence": 0.539,
+      "line": 6,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "something",
+      "start": 72.46,
+      "end": 73.0,
+      "confidence": 0.961,
+      "line": 6,
+      "tags": []
+    },
+    {
+      "word": "you",
+      "start": 73.0,
+      "end": 73.34,
+      "confidence": 0.99,
+      "line": 6,
+      "tags": []
+    },
+    {
+      "word": "should",
+      "start": 73.34,
+      "end": 73.76,
+      "confidence": 0.921,
+      "line": 6,
+      "tags": []
+    },
+    {
+      "word": "know",
+      "start": 73.76,
+      "end": 74.7,
+      "confidence": 0.997,
+      "line": 6,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "You've",
+      "start": 75.3,
+      "end": 76.08,
+      "confidence": 0.792,
+      "line": 7,
+      "tags": []
+    },
+    {
+      "word": "got",
+      "start": 76.08,
+      "end": 76.24,
+      "confidence": 0.982,
+      "line": 7,
+      "tags": []
+    },
+    {
+      "word": "a",
+      "start": 76.24,
+      "end": 76.48,
+      "confidence": 0.992,
+      "line": 7,
+      "tags": []
+    },
+    {
+      "word": "place",
+      "start": 76.48,
+      "end": 76.82,
+      "confidence": 0.999,
+      "line": 7,
+      "tags": [
+        "emotion"
+      ]
+    },
+    {
+      "word": "to",
+      "start": 76.82,
+      "end": 77.4,
+      "confidence": 0.998,
+      "line": 7,
+      "tags": []
+    },
+    {
+      "word": "go",
+      "start": 77.4,
+      "end": 83.5,
+      "confidence": 0.987,
+      "line": 7,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "I",
+      "start": 83.5,
+      "end": 84.68,
+      "confidence": 0.31,
+      "line": 8,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "used",
+      "start": 84.68,
+      "end": 85.1,
+      "confidence": 0.893,
+      "line": 8,
+      "tags": []
+    },
+    {
+      "word": "to",
+      "start": 85.1,
+      "end": 85.46,
+      "confidence": 0.997,
+      "line": 8,
+      "tags": []
+    },
+    {
+      "word": "say",
+      "start": 85.46,
+      "end": 86.78,
+      "confidence": 0.911,
+      "line": 8,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "I",
+      "start": 88.08,
+      "end": 88.72,
+      "confidence": 0.755,
+      "line": 8,
+      "tags": []
+    },
+    {
+      "word": "and",
+      "start": 88.72,
+      "end": 89.1,
+      "confidence": 0.738,
+      "line": 8,
+      "tags": []
+    },
+    {
+      "word": "me",
+      "start": 89.1,
+      "end": 90.38,
+      "confidence": 0.942,
+      "line": 8,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "Now",
+      "start": 91.6,
+      "end": 92.16,
+      "confidence": 0.983,
+      "line": 9,
+      "tags": []
+    },
+    {
+      "word": "it's",
+      "start": 92.16,
+      "end": 92.84,
+      "confidence": 0.792,
+      "line": 9,
+      "tags": []
+    },
+    {
+      "word": "us",
+      "start": 92.84,
+      "end": 93.5,
+      "confidence": 0.929,
+      "line": 9,
+      "tags": [
+        "key"
+      ]
+    },
+    {
+      "word": "now",
+      "start": 95.12,
+      "end": 95.7,
+      "confidence": 0.942,
+      "line": 9,
+      "tags": []
+    },
+    {
+      "word": "it's",
+      "start": 95.7,
+      "end": 96.22,
+      "confidence": 0.989,
+      "line": 9,
+      "tags": []
+    },
+    {
+      "word": "we",
+      "start": 96.22,
+      "end": 96.76,
+      "confidence": 0.974,
+      "line": 9,
+      "tags": [
+        "key"
+      ]
+    },
+    {
+      "word": "Now",
+      "start": 125.34,
+      "end": 126.74,
+      "confidence": 0.128,
+      "line": 10,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "it's",
+      "start": 126.74,
+      "end": 126.74,
+      "confidence": 0.845,
+      "line": 10,
+      "tags": []
+    },
+    {
+      "word": "us",
+      "start": 126.74,
+      "end": 126.74,
+      "confidence": 0.0,
+      "line": 10,
+      "tags": [
+        "key"
+      ]
+    },
+    {
+      "word": "now",
+      "start": 126.74,
+      "end": 126.74,
+      "confidence": 0.412,
+      "line": 10,
+      "tags": []
+    },
+    {
+      "word": "it's",
+      "start": 126.74,
+      "end": 126.74,
+      "confidence": 0.99,
+      "line": 10,
+      "tags": []
+    },
+    {
+      "word": "we",
+      "start": 126.74,
+      "end": 126.74,
+      "confidence": 0.059,
+      "line": 10,
+      "tags": [
+        "key"
+      ]
+    },
+    {
+      "word": "They",
+      "start": 126.74,
+      "end": 127.16,
+      "confidence": 0.049,
+      "line": 11,
+      "tags": []
+    },
+    {
+      "word": "don't",
+      "start": 127.16,
+      "end": 128.76,
+      "confidence": 0.604,
+      "line": 11,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "see",
+      "start": 128.76,
+      "end": 129.22,
+      "confidence": 0.967,
+      "line": 11,
+      "tags": []
+    },
+    {
+      "word": "you",
+      "start": 129.22,
+      "end": 129.64,
+      "confidence": 0.974,
+      "line": 11,
+      "tags": []
+    },
+    {
+      "word": "as",
+      "start": 129.64,
+      "end": 130.1,
+      "confidence": 0.917,
+      "line": 11,
+      "tags": []
+    },
+    {
+      "word": "I",
+      "start": 130.1,
+      "end": 130.78,
+      "confidence": 0.975,
+      "line": 11,
+      "tags": []
+    },
+    {
+      "word": "do",
+      "start": 130.78,
+      "end": 131.3,
+      "confidence": 0.995,
+      "line": 11,
+      "tags": []
+    },
+    {
+      "word": "I",
+      "start": 132.12,
+      "end": 132.32,
+      "confidence": 0.958,
+      "line": 12,
+      "tags": []
+    },
+    {
+      "word": "wish",
+      "start": 132.32,
+      "end": 132.74,
+      "confidence": 0.918,
+      "line": 12,
+      "tags": []
+    },
+    {
+      "word": "they",
+      "start": 132.74,
+      "end": 133.14,
+      "confidence": 0.995,
+      "line": 12,
+      "tags": []
+    },
+    {
+      "word": "would",
+      "start": 133.14,
+      "end": 133.46,
+      "confidence": 0.936,
+      "line": 12,
+      "tags": []
+    },
+    {
+      "word": "try",
+      "start": 133.46,
+      "end": 134.08,
+      "confidence": 0.988,
+      "line": 12,
+      "tags": []
+    },
+    {
+      "word": "to",
+      "start": 134.08,
+      "end": 134.88,
+      "confidence": 0.885,
+      "line": 12,
+      "tags": []
+    },
+    {
+      "word": "I'm",
+      "start": 135.38,
+      "end": 135.8,
+      "confidence": 0.983,
+      "line": 13,
+      "tags": []
+    },
+    {
+      "word": "sure",
+      "start": 135.8,
+      "end": 136.14,
+      "confidence": 0.997,
+      "line": 13,
+      "tags": []
+    },
+    {
+      "word": "they'd",
+      "start": 136.14,
+      "end": 136.8,
+      "confidence": 0.913,
+      "line": 13,
+      "tags": []
+    },
+    {
+      "word": "think",
+      "start": 136.8,
+      "end": 137.26,
+      "confidence": 0.989,
+      "line": 13,
+      "tags": []
+    },
+    {
+      "word": "again",
+      "start": 137.26,
+      "end": 138.1,
+      "confidence": 0.989,
+      "line": 13,
+      "tags": []
+    },
+    {
+      "word": "if",
+      "start": 138.1,
+      "end": 138.82,
+      "confidence": 0.593,
+      "line": 13,
+      "tags": []
+    },
+    {
+      "word": "they",
+      "start": 138.82,
+      "end": 139.42,
+      "confidence": 0.982,
+      "line": 13,
+      "tags": []
+    },
+    {
+      "word": "had",
+      "start": 139.42,
+      "end": 140.06,
+      "confidence": 0.977,
+      "line": 13,
+      "tags": []
+    },
+    {
+      "word": "a",
+      "start": 140.06,
+      "end": 140.42,
+      "confidence": 0.977,
+      "line": 13,
+      "tags": []
+    },
+    {
+      "word": "friend",
+      "start": 140.42,
+      "end": 140.96,
+      "confidence": 0.96,
+      "line": 13,
+      "tags": [
+        "key",
+        "emotion"
+      ]
+    },
+    {
+      "word": "like",
+      "start": 140.96,
+      "end": 141.54,
+      "confidence": 0.972,
+      "line": 13,
+      "tags": []
+    },
+    {
+      "word": "Ben",
+      "start": 141.54,
+      "end": 142.56,
+      "confidence": 0.538,
+      "line": 13,
+      "tags": [
+        "key",
+        "hold"
+      ]
+    },
+    {
+      "word": "Like",
+      "start": 147.1,
+      "end": 148.5,
+      "confidence": 0.141,
+      "line": 14,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "Ben",
+      "start": 148.5,
+      "end": 149.88,
+      "confidence": 0.017,
+      "line": 14,
+      "tags": [
+        "key",
+        "hold"
+      ]
+    },
+    {
+      "word": "like",
+      "start": 152.0,
+      "end": 152.0,
+      "confidence": 0.51,
+      "line": 14,
+      "tags": []
+    },
+    {
+      "word": "Ben",
+      "start": 152.0,
+      "end": 152.0,
+      "confidence": 0.971,
+      "line": 14,
+      "tags": [
+        "key"
+      ]
+    },
+    {
+      "word": "like",
+      "start": 152.0,
+      "end": 156.34,
+      "confidence": 0.926,
+      "line": 14,
+      "tags": [
+        "hold"
+      ]
+    },
+    {
+      "word": "Ben",
+      "start": 156.34,
+      "end": 158.22,
+      "confidence": 0.988,
+      "line": 14,
+      "tags": [
+        "key",
+        "hold"
+      ]
+    }
+  ],
+  "lines": [
+    {
+      "id": 0,
+      "text": "We both found what we were looking for",
+      "start": 20.34,
+      "end": 27.54
+    },
+    {
+      "id": 1,
+      "text": "With a friend to call my own I'll never be alone",
+      "start": 27.54,
+      "end": 36.4
+    },
+    {
+      "id": 2,
+      "text": "Any of you my friend will see you've got a friend in me",
+      "start": 36.9,
+      "end": 43.74
+    },
+    {
+      "id": 3,
+      "text": "Ben you're always running here and there",
+      "start": 49.0,
+      "end": 55.36
+    },
+    {
+      "id": 4,
+      "text": "You feel you're not wanted anywhere",
+      "start": 56.7,
+      "end": 61.56
+    },
+    {
+      "id": 5,
+      "text": "If you ever look behind and don't like what you find",
+      "start": 63.58,
+      "end": 71.5
+    },
+    {
+      "id": 6,
+      "text": "there's something you should know",
+      "start": 71.5,
+      "end": 74.7
+    },
+    {
+      "id": 7,
+      "text": "You've got a place to go",
+      "start": 75.3,
+      "end": 83.5
+    },
+    {
+      "id": 8,
+      "text": "I used to say I and me",
+      "start": 83.5,
+      "end": 90.38
+    },
+    {
+      "id": 9,
+      "text": "Now it's us now it's we",
+      "start": 91.6,
+      "end": 96.76
+    },
+    {
+      "id": 10,
+      "text": "Now it's us now it's we",
+      "start": 125.34,
+      "end": 126.74
+    },
+    {
+      "id": 11,
+      "text": "They don't see you as I do",
+      "start": 126.74,
+      "end": 131.3
+    },
+    {
+      "id": 12,
+      "text": "I wish they would try to",
+      "start": 132.12,
+      "end": 134.88
+    },
+    {
+      "id": 13,
+      "text": "I'm sure they'd think again if they had a friend like Ben",
+      "start": 135.38,
+      "end": 142.56
+    },
+    {
+      "id": 14,
+      "text": "Like Ben like Ben like Ben",
+      "start": 147.1,
+      "end": 158.22
+    }
+  ],
+  "phrases": [
+    {
+      "id": "intro",
+      "start": 0.0,
+      "end": 20.0,
+      "label": "intro"
+    },
+    {
+      "id": "verse-1",
+      "start": 20.34,
+      "end": 48.9,
+      "label": "verse"
+    },
+    {
+      "id": "chorus-1",
+      "start": 49.0,
+      "end": 100.0,
+      "label": "chorus"
+    },
+    {
+      "id": "bridge",
+      "start": 100.1,
+      "end": 125.0,
+      "label": "bridge"
+    },
+    {
+      "id": "chorus",
+      "start": 125.34,
+      "end": 160.0,
+      "label": "chorus"
+    }
+  ]
+}
