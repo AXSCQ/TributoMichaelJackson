@@ -1,6 +1,8 @@
 ---
 import '../styles/ben.css';
 import BenHero from '../components/Ben/BenHero';
+const canonicalURL = 'https://mjtributo.codetec.online/';
+const ogImage = 'https://mjtributo.codetec.online/Ben/ben.webp';
 ---
 
 <!DOCTYPE html>
@@ -11,20 +13,77 @@ import BenHero from '../components/Ben/BenHero';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="canonical" href={canonicalURL} />
 
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="2xR89xoxTv8Z60ULdARoFZYTnVjTIcKuAaseubjxPMo" />
+
+    <!-- Primary SEO -->
     <title>Michael Jackson — "Ben" (1972) | La Inocencia Aislada · Tributo Interactivo</title>
-    <meta name="description" content="Acto I: La Inocencia Aislada. Experiencia web audio-reactiva con SonicMotion, SonicFX, SonicScroll y SonicWave. La historia de Ben, 1972." />
-    <meta name="keywords" content="Michael Jackson, Ben, 1972, tributo interactivo, audio reactivo, SonicMotion" />
+    <meta name="description" content="Acto I: Ben (1972). Una experiencia web audio-reactiva e inmersiva que explora la soledad y genialidad de Michael Jackson a los 14 años. Música, historia y tecnología en un solo tributo." />
+    <meta name="keywords" content="Michael Jackson, Ben 1972, tributo interactivo, experiencia web, Michael Jackson historia, música interactiva, Billie Jean, Scream, Rey del Pop" />
+    <meta name="author" content="Axel CSCQ" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tributo Michael Jackson" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content='Michael Jackson — "Ben" (1972) | La Inocencia Aislada' />
+    <meta property="og:description" content="Una experiencia web audio-reactiva e inmersiva. La historia de cómo Michael Jackson, a los 14 años, cantó su propia soledad disfrazada de balada pop." />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content='Michael Jackson — "Ben" (1972) | Tributo Interactivo' />
+    <meta name="twitter:description" content="Una experiencia web inmersiva y audio-reactiva. La tecnología Sonic no se ve, se siente." />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Tributo Michael Jackson",
+        "url": canonicalURL,
+        "description": "Experiencia web interactiva y audio-reactiva en homenaje a Michael Jackson.",
+        "inLanguage": "es",
+        "author": {
+            "@type": "Person",
+            "name": "Axel CSCQ",
+            "url": "https://axscq.netlify.app/"
+        },
+        "about": {
+            "@type": "MusicRecording",
+            "name": "Ben",
+            "byArtist": {
+                "@type": "MusicGroup",
+                "name": "Michael Jackson"
+            },
+            "datePublished": "1972"
+        }
+    })} />
 
     <!-- Performance hints -->
     <link rel="preload" href="/Ben/master.mp3" as="audio" type="audio/mpeg" />
     <link rel="preload" href="/Ben/bensinfondo.png" as="image" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Tributo MJ — Ben, 1972 · La Inocencia Aislada" />
-    <meta property="og:description" content="Una experiencia web inmersiva y audio-reactiva. La tecnología Sonic no se ve, se siente." />
 </head>
 <body>
     <BenHero client:only="react" />
+
+    <!-- Portfolio credit — subtle footer -->
+    <footer style="position:fixed;bottom:1rem;right:1.2rem;z-index:9999;opacity:0;transition:opacity 0.4s;" 
+            onmouseenter="this.style.opacity='1'" 
+            onmouseleave="this.style.opacity='0'">
+        <a href="https://axscq.netlify.app/" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           style="font-size:0.6rem;color:rgba(212,175,55,0.55);text-decoration:none;letter-spacing:0.08em;font-family:monospace;">
+            ✦ axscq.dev
+        </a>
+    </footer>
 </body>
 </html>

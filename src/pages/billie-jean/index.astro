@@ -3,6 +3,8 @@ import '../../styles/ben.css';
 import '../../styles/billiejean.css';
 import BillieJeanHero from '../../components/BillieJean/BillieJeanHero';
 import BillieJeanNarrative from '../../components/BillieJean/BillieJeanNarrative';
+const canonicalURL = 'https://mjtributo.codetec.online/billie-jean/';
+const ogImage = 'https://mjtributo.codetec.online/BillieJean/billejean.webp';
 ---
 
 <!DOCTYPE html>
@@ -12,11 +14,66 @@ import BillieJeanNarrative from '../../components/BillieJean/BillieJeanNarrative
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="canonical" href={canonicalURL} />
 
-    <title>Michael Jackson — "Billie Jean" (1982) | El Trono del Ritmo</title>
-    <meta name="description" content="Acto II: El Trono del Ritmo. La historia detrás de Billie Jean. Experiencia interactiva audio-reactiva con SonicMotion." />
-    <meta property="og:title" content="Tributo MJ — Billie Jean, 1982" />
-    <meta property="og:description" content="Experiencia web inmersiva. La tecnología Sonic reacciona al bajo icónico de Billie Jean." />
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="2xR89xoxTv8Z60ULdARoFZYTnVjTIcKuAaseubjxPMo" />
+
+    <!-- Primary SEO -->
+    <title>Michael Jackson — "Billie Jean" (1982) | El Trono del Ritmo · Tributo Interactivo</title>
+    <meta name="description" content="Acto II: Billie Jean (1982). La historia detrás de la canción más icónica de Michael Jackson. Experiencia web audio-reactiva donde el bajo legendario cobra vida visual." />
+    <meta name="keywords" content="Michael Jackson, Billie Jean, 1982, Thriller, tributo interactivo, experiencia web, Rey del Pop, historia musical, música interactiva" />
+    <meta name="author" content="Axel CSCQ" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tributo Michael Jackson" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content='Michael Jackson — "Billie Jean" (1982) | El Trono del Ritmo' />
+    <meta property="og:description" content="El bajo más reconocible de la historia de la música. Acto II de una experiencia web audio-reactiva en homenaje al Rey del Pop." />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content='Michael Jackson — "Billie Jean" (1982) | Tributo Interactivo' />
+    <meta name="twitter:description" content="El bajo más reconocible de la historia reacciona a cada nota. Experiencia web inmersiva." />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": 'Michael Jackson — "Billie Jean" | Tributo Interactivo',
+        "url": canonicalURL,
+        "description": "Experiencia web audio-reactiva dedicada a Billie Jean (1982).",
+        "inLanguage": "es",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Tributo Michael Jackson",
+            "url": "https://mjtributo.codetec.online/"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Axel CSCQ",
+            "url": "https://axscq.netlify.app/"
+        },
+        "about": {
+            "@type": "MusicRecording",
+            "name": "Billie Jean",
+            "byArtist": {
+                "@type": "MusicGroup",
+                "name": "Michael Jackson"
+            },
+            "datePublished": "1982",
+            "inAlbum": "Thriller"
+        }
+    })} />
 
     <link rel="preload" href="/BillieJean/master.mp3" as="audio" type="audio/mpeg" />
 </head>
@@ -24,5 +81,17 @@ import BillieJeanNarrative from '../../components/BillieJean/BillieJeanNarrative
     <!-- Navbar rendered by React component (BillieJeanHero includes it) -->
     <BillieJeanHero client:only="react" />
     <BillieJeanNarrative client:visible />
+
+    <!-- Portfolio credit — subtle footer -->
+    <footer style="position:fixed;bottom:1rem;right:1.2rem;z-index:9999;opacity:0;transition:opacity 0.4s;" 
+            onmouseenter="this.style.opacity='1'" 
+            onmouseleave="this.style.opacity='0'">
+        <a href="https://axscq.netlify.app/" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           style="font-size:0.6rem;color:rgba(212,175,55,0.55);text-decoration:none;letter-spacing:0.08em;font-family:monospace;">
+            ✦ axscq.dev
+        </a>
+    </footer>
 </body>
 </html>

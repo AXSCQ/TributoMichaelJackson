@@ -505,29 +505,21 @@ body {
 .ben-narrative {
     position: relative;
     padding: 8rem 2rem;
-    max-width: 900px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .ben-narrative-line {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom,
-            transparent 0%,
-            var(--ben-gold-light) 10%,
-            var(--ben-gold-light) 90%,
-            transparent 100%);
-    transform: translateX(-50%);
+    display: none;
 }
 
 .ben-narrative-card {
     position: relative;
-    width: 42%;
+    width: 85%;
+    max-width: 500px;
     padding: 2.5rem;
     margin-bottom: 5rem;
+    margin-left: auto;
+    margin-right: auto;
     background: #FFFFFF;
     border: 1px solid rgba(180, 160, 120, 0.12);
     border-radius: 2px;
@@ -540,38 +532,20 @@ body {
 }
 
 .ben-narrative-card.left {
-    margin-right: auto;
-    transform: translateX(-40px);
+    transform: translateY(40px);
 }
 
 .ben-narrative-card.right {
-    margin-left: auto;
-    transform: translateX(40px);
+    transform: translateY(40px);
 }
 
 .ben-narrative-card.visible {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
 }
 
 .ben-narrative-card::after {
-    content: '';
-    position: absolute;
-    top: 2.5rem;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--ben-gold);
-    border: 3px solid #ffffff;
-    box-shadow: 0 0 0 1px var(--ben-gold-light);
-}
-
-.ben-narrative-card.left::after {
-    right: -6.5%;
-}
-
-.ben-narrative-card.right::after {
-    left: -6.5%;
+    display: none;
 }
 
 .ben-narrative-year {
@@ -1068,3 +1042,51 @@ body {
     color: var(--ben-gold);
     opacity: 0.7;
 }
+/* ═══════════════════════════════════════════════════════════════════
+   LAYOUT ESTRUCTURAL (SPLIT)
+═══════════════════════════════════════════════════════════════════ */
+
+/* Split Layout */
+.ben-split-layout {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background: var(--ben-white);
+}
+
+/* Izquierda: Fija (sticky) */
+.ben-split-layout .sticky-col {
+    width: 50vw;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Derecha: Scrollable */
+.ben-split-layout .scroll-col {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+}
+
+/* El Hero dentro del split ocupa su columna al 100% */
+.ben-split-layout .ben-hero {
+    min-height: 100vh;
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .ben-split-layout {
+        flex-direction: column;
+    }
+    .ben-split-layout .sticky-col,
+    .ben-split-layout .scroll-col {
+        width: 100%;
+    }
+    .ben-split-layout .sticky-col {
+        position: relative;
+        height: auto;
+    }
+}
+

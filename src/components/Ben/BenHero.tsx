@@ -11,6 +11,7 @@ const reducedMotion = () => typeof window !== 'undefined' && window.matchMedia('
 
 export default function BenHero() {
     const [isPlaying, setIsPlaying] = useState(false);
+    const isPlayingRef = useRef(false);
     const [isLoaded, setIsLoaded] = useState(false);
     const [currentWord, setCurrentWord] = useState('');
     const [currentLine, setCurrentLine] = useState('');
@@ -359,7 +360,7 @@ export default function BenHero() {
             }
 
             // ─ MOUSE MODE: pre-play ambient wave ─────────────────
-            if (!isPlaying && mouseWaveRef.current) {
+            if (!isPlayingRef.current && mouseWaveRef.current) {
                 const mx = s.mouseX, my = s.mouseY;
                 mouseWaveRef.current.style.background =
                     `radial-gradient(circle 220px at ${(mx * 100).toFixed(1)}% ${(my * 100).toFixed(1)}%,` +
@@ -367,7 +368,7 @@ export default function BenHero() {
             }
 
             // ─ End-of-song: scroll unlock ─────────────────────────
-            if (isPlaying && r.vocals < 0.02 && r.bass < 0.02 && r.guitar < 0.02) {
+            if (isPlayingRef.current && r.vocals < 0.02 && r.bass < 0.02 && r.guitar < 0.02) {
                 s.silenceTimer += 0.016;
                 if (s.silenceTimer > 5) {
                     setScrollUnlocked(true);
@@ -405,28 +406,15 @@ export default function BenHero() {
             lyricsRef.current?.start?.();
             setMouseMode(false);
         }
-        setIsPlaying(p => !p);
+        setIsPlaying(p => {
+            const next = !p;
+            isPlayingRef.current = next;
+            return next;
+        });
     };
 
     const handleCardClick = (year: string) => {
-        const newVal = expandedCard === year ? null : year;
-        setExpandedCard(newVal);
-
-
-        if (newVal === '1972') {
-            setBenActive(true);
-            st.current.keyFlash = 2.0;
-            try { sonicRef.current?.setVolume?.('other', 1.5); } catch (e) { }
-        } else if (newVal === '1963') {
-            try {
-                ['vocals', 'bass', 'coros', 'other'].forEach(s => sonicRef.current?.setVolume?.(s, 0));
-                sonicRef.current?.setVolume?.('guitar', 1.5);
-            } catch (e) { }
-        } else {
-            try {
-                ['vocals', 'bass', 'coros', 'other', 'guitar'].forEach(s => sonicRef.current?.setVolume?.(s, 1));
-            } catch (e) { }
-        }
+        setExpandedCard(prev => prev === year ? null : year);
     };
 
     return (
@@ -441,134 +429,132 @@ export default function BenHero() {
                 </div>
             </nav>
 
-            <section
-                ref={sectionRef}
-                className={[
-                    'ben-hero',
-                    mouseMode ? 'mouse-mode' : '',
-                    choirDiffuse ? 'choir-diffuse' : '',
-                    benActive ? 'ben-word-active' : '',
-                    twoOfUsActive ? 'two-of-us-active' : '',
-                    scrollUnlocked ? 'scroll-unlocked' : '',
-                ].filter(Boolean).join(' ')}
-                style={{ overflow: scrollUnlocked ? 'visible' : 'hidden' }}
-            >
-                {/* Floating gold particles — CSS only */}
-                <div className="ben-particles" aria-hidden="true">
-                    <span className="ben-particle" />
-                    <span className="ben-particle" />
-                    <span className="ben-particle" />
-                    <span className="ben-particle" />
-                    <span className="ben-particle" />
-                    <span className="ben-particle" />
-                </div>
-                {/* Bass inset layer */}
-                <div className="ben-bass-vig" ref={bassVigRef} />
-
-                {/* Bass ripple pool */}
-                <div className="ben-ripple-pool" ref={ripplePoolRef} aria-hidden="true" />
-
-                {/* Key-word flash */}
-                <div className={`ben-key-flash ${benActive ? 'ben-flash' : keyWordActive ? 'active' : ''}`}
-                    ref={keyFlashRef} aria-hidden="true" />
-
-                {/* Mouse-mode ambient wave */}
-                <div className="ben-mouse-wave" ref={mouseWaveRef} aria-hidden="true" />
-
-                {/* Chorus edge vignette */}
-                <div className="ben-chorus-wave ben-chorus-left" ref={chorusLRef} />
-                <div className="ben-chorus-wave ben-chorus-right" ref={chorusRRef} />
-
-                {/* Year watermark */}
-                <span className="ben-year" ref={yearRef} aria-hidden="true">1972</span>
-
-                {/* Violin SonicWave — rising canvas */}
-                <div className="ben-wave-wrap" ref={canvasWrapRef} aria-hidden="true">
-                    <canvas ref={canvasRef} className="ben-wave-canvas" />
-                </div>
-
-                <div className="ben-content">
-                    <p className="ben-act">Acto I · 1972</p>
-
-                    <h1 className="ben-title" ref={titleRef}>
-                        La Inocencia<br />
-                        <span ref={titleWordRef} className="ben-title-word">Aislada</span>
-                    </h1>
-
-                    {/* SonicLyrics karaoke */}
-                    <div className="ben-lyrics-display" aria-live="polite">
-                        <p ref={lyricsLineRef} className={`ben-lyrics-line ${currentLine ? 'visible' : ''}`}>
-                            {currentLine || '\u00A0'}
-                        </p>
-                        <span ref={lyricsWordRef} className={`ben-lyrics-word ${currentWord ? 'visible' : ''} ${benActive ? 'ben-glow' : ''}`}>
-                            {currentWord}
-                        </span>
-                    </div>
-
-                    <p className="ben-lyric" ref={lyricRef}>La soledad en medio del éxito</p>
-
-                    {/* Central Portrait */}
-                    <div className="ben-image-container">
-                        <div className="ben-vocal-glow" ref={vocalGlowRef} aria-hidden="true" />
-                        <img
-                            ref={imageRef}
-                            src="/Ben/bensinfondo.png"
-                            alt="Michael Jackson a los 14 años, 1972"
-                            className="ben-image"
-                            loading="eager" decoding="async" width="360" height="520"
-                        />
-                    </div>
-
-                    <blockquote className="ben-quote" ref={quoteRef}>
-                        "Ben, the two of us need look no more…<br />
-                        We both found what we were looking for."
-                    </blockquote>
-
-                    <button
-                        className={`ben-play-btn ${isPlaying ? 'playing' : ''}`}
-                        onClick={togglePlay} disabled={!isLoaded}
-                        aria-label={isPlaying ? 'Pausar Ben' : 'Reproducir Ben'}
+            {/* SECTION: SPLIT LAYOUT */}
+            <section className="ben-split-layout">
+                {/* Left side: Sticky Hero */}
+                <div className="sticky-col">
+                    <section
+                        ref={sectionRef}
+                        className={[
+                            'ben-hero',
+                            mouseMode ? 'mouse-mode' : '',
+                            choirDiffuse ? 'choir-diffuse' : '',
+                            benActive ? 'ben-word-active' : '',
+                            twoOfUsActive ? 'two-of-us-active' : '',
+                            scrollUnlocked ? 'scroll-unlocked' : '',
+                        ].filter(Boolean).join(' ')}
+                        style={{ overflow: scrollUnlocked ? 'visible' : 'hidden' }}
                     >
-                        <span className="ben-play-icon" aria-hidden="true">{isPlaying ? '❚❚' : '▶'}</span>
-                        <span className="ben-play-text">{isPlaying ? 'Pausar' : 'Escuchar "Ben"'}</span>
-                    </button>
+                        {/* Floating gold particles — CSS only */}
+                        <div className="ben-particles" aria-hidden="true">
+                            <span className="ben-particle" />
+                            <span className="ben-particle" />
+                            <span className="ben-particle" />
+                            <span className="ben-particle" />
+                            <span className="ben-particle" />
+                            <span className="ben-particle" />
+                        </div>
+                        {/* Bass inset layer */}
+                        <div className="ben-bass-vig" ref={bassVigRef} />
+
+                        {/* Bass ripple pool */}
+                        <div className="ben-ripple-pool" ref={ripplePoolRef} aria-hidden="true" />
+
+                        {/* Key-word flash */}
+                        <div className={`ben-key-flash ${benActive ? 'ben-flash' : keyWordActive ? 'active' : ''}`}
+                            ref={keyFlashRef} aria-hidden="true" />
+
+                        {/* Mouse-mode ambient wave */}
+                        <div className="ben-mouse-wave" ref={mouseWaveRef} aria-hidden="true" />
+
+                        {/* Chorus edge vignette */}
+                        <div className="ben-chorus-wave ben-chorus-left" ref={chorusLRef} />
+                        <div className="ben-chorus-wave ben-chorus-right" ref={chorusRRef} />
+
+                        {/* Year watermark */}
+                        <span className="ben-year" ref={yearRef} aria-hidden="true">1972</span>
+
+                        {/* Violin SonicWave — rising canvas */}
+                        <div className="ben-wave-wrap" ref={canvasWrapRef} aria-hidden="true">
+                            <canvas ref={canvasRef} className="ben-wave-canvas" />
+                        </div>
+
+                        <div className="ben-content">
+                            <p className="ben-act">Acto I · 1972</p>
+
+                            <h1 className="ben-title" ref={titleRef}>
+                                La Inocencia<br />
+                                <span ref={titleWordRef} className="ben-title-word">Aislada</span>
+                            </h1>
+
+                            {/* SonicLyrics karaoke */}
+                            <div className="ben-lyrics-display" aria-live="polite">
+                                <p ref={lyricsLineRef} className={`ben-lyrics-line ${currentLine ? 'visible' : ''}`}>
+                                    {currentLine || '\u00A0'}
+                                </p>
+                                <span ref={lyricsWordRef} className={`ben-lyrics-word ${currentWord ? 'visible' : ''} ${benActive ? 'ben-glow' : ''}`}>
+                                    {currentWord}
+                                </span>
+                            </div>
+
+                            <p className="ben-lyric" ref={lyricRef}>La soledad en medio del éxito</p>
+
+                            {/* Central Portrait */}
+                            <div className="ben-image-container">
+                                <div className="ben-vocal-glow" ref={vocalGlowRef} aria-hidden="true" />
+                                <img
+                                    ref={imageRef}
+                                    src="/Ben/bensinfondo.png"
+                                    alt="Michael Jackson a los 14 años, 1972"
+                                    className="ben-image"
+                                    loading="eager" decoding="async" width="360" height="520"
+                                />
+                            </div>
+
+                            <blockquote className="ben-quote" ref={quoteRef}>
+                                "Ben, the two of us need look no more…<br />
+                                We both found what we were looking for."
+                            </blockquote>
+
+                            <button
+                                className={`ben-play-btn ${isPlaying ? 'playing' : ''}`}
+                                onClick={togglePlay} disabled={!isLoaded}
+                                aria-label={isPlaying ? 'Pausar Ben' : 'Reproducir Ben'}
+                            >
+                                <span className="ben-play-icon" aria-hidden="true">{isPlaying ? '❚❚' : '▶'}</span>
+                                <span className="ben-play-text">{isPlaying ? 'Pausar' : 'Escuchar "Ben"'}</span>
+                            </button>
+                        </div>
+                    </section>
                 </div>
 
-                {/* Transition hint to Act II */}
-                {scrollUnlocked && (
-                    <div className="ben-scroll-hint" aria-label="Continuar al Acto II">
-                        <span className="ben-scroll-hint__line" />
-                        <span className="ben-scroll-hint__text">Acto II · Billie Jean</span>
-                    </div>
-                )}
-            </section>
-
-            {/* Narrative */}
-            <section className="ben-narrative" aria-label="Historia de Ben">
-                <div className="ben-narrative-line" aria-hidden="true" />
-                {[
-                    { year: '1963', title: 'El niño que nunca jugó', text: 'La pérdida de la infancia. Mientras otros niños descubrían el mundo, Michael descubría la disciplina marcial.', deepContext: 'A los 5 años, la sala de estar de los Jackson no era un lugar de juegos, era un centro de entrenamiento. Las "5 horas de ensayo" no eran una opción; eran el estándar impuesto por Joe Jackson. Michael miraba por la ventana a otros niños jugar en el parque mientras él perfeccionaba el footwork.', meaning: 'El éxito llegó antes que la capacidad de procesarlo. Michael aprendió que el amor y la aceptación estaban condicionados al rendimiento perfecto.', sonicGuide: 'Fondo levemente traslúcido. Stem de la Guitarra Acústica como único protagonista.', side: 'left', delay: 0 },
-                    { year: '1969', title: 'Jackson 5: La máquina de éxitos', text: 'El peso de la corona a los 11 años. De niño a producto global.', deepContext: 'Con hits como "I Want You Back", Michael se convirtió en el rostro de la Motown. Era el centro de una maquinaria que no podía permitirse fallar. A los 11 años, él era el sustento económico de una familia de diez personas y el pilar de un imperio discográfico.', meaning: 'La presión era "absoluta". Michael empezó a desarrollar una hiper-vigilancia y una búsqueda de perfección que rozaba la ansiedad. Ya no era Michael; era "el pequeño Michael".', sonicGuide: 'Gráficos de discos de oro que vibran. Textos vibran con el Bajo.', side: 'right', delay: 120 },
-                    { year: '1972', title: '"Ben": Un canto a la amistad', text: 'El espejo de la soledad. Cuando un niño solo puede ser él mismo ante un animal.', deepContext: 'Originalmente escrita para la secuela de una película de terror sobre ratas, Michael transformó "Ben" en algo profundamente personal. Para él, Ben no era una rata; era el concepto de alguien que te acepta sin pedirte un hit a cambio. Es el año de su primer éxito masivo como solista. Mientras el mundo celebraba su voz, él cantaba "If you ever look behind and don\'t like what you find", una confesión directa de su soledad. Fue su primer grito de auxilio disfrazado de balada pop.', meaning: '', sonicGuide: 'Aura Ámbar activada. Master de "Ben" y Violines llenan el vacío visual.', side: 'left', delay: 240 },
-                    { year: '1974', title: 'El reflejo en el espejo', text: 'La fragmentación de la identidad. El inicio de la lucha con su propia imagen.', deepContext: 'En plena adolescencia, Joe Jackson comenzó a burlarse cruelmente de las facciones de Michael, especialmente de su nariz. Estas críticas, en el momento más vulnerable de su desarrollo, crearon una dismorfia que lo perseguiría siempre.', meaning: 'Michael empezó a odiar el espejo. La música seguía siendo su refugio, pero su cuerpo se convirtió en su prisión. "Ben" seguía resonando, pero ahora la soledad era interna.', sonicGuide: 'Efecto de "espejo roto". Distorsión que reacciona a los Coros.', side: 'right', delay: 360 },
-                ].map((item, i) => {
-                    const isExpanded = expandedCard === item.year;
-                    return (
-                        <article key={i} data-scroll="slideUp" data-scroll-delay={String(item.delay)}
-                            className={`ben-narrative-card ${item.side} ${isExpanded ? 'expanded' : ''}`}
-                            onClick={() => handleCardClick(item.year)}>
-                            <time className="ben-narrative-year" dateTime={item.year}>{item.year}</time>
-                            <h3 className="ben-narrative-title">{item.title}</h3>
-                            <div>
-                                <p className="ben-narrative-text">{item.text}</p>
-                                <div className="card-content-deep">
-                                    <p className="ben-narrative-context">{item.deepContext}</p>
-                                    {item.meaning && <p className="ben-narrative-meaning">{item.meaning}</p>}
-                                </div>
-                            </div>
-                        </article>
-                    );
-                })}
+                {/* Right side: Scrolling Narrative */}
+                <div className="scroll-col">
+                    <section className="ben-narrative" aria-label="Historia de Ben">
+                        <div className="ben-narrative-line" aria-hidden="true" />
+                        {[
+                            { year: '1963', title: 'El niño que nunca jugó', text: 'La pérdida de la infancia. Mientras otros niños descubrían el mundo, Michael descubría la disciplina marcial.', deepContext: 'A los 5 años, la sala de estar de los Jackson no era un lugar de juegos, era un centro de entrenamiento. Las "5 horas de ensayo" no eran una opción; eran el estándar impuesto por Joe Jackson. Michael miraba por la ventana a otros niños jugar en el parque mientras él perfeccionaba el footwork.', meaning: 'El éxito llegó antes que la capacidad de procesarlo. Michael aprendió que el amor y la aceptación estaban condicionados al rendimiento perfecto.', side: 'left', delay: 0 },
+                            { year: '1969', title: 'Jackson 5: La máquina de éxitos', text: 'El peso de la corona a los 11 años. De niño a producto global.', deepContext: 'Con hits como "I Want You Back", Michael se convirtió en el rostro de la Motown. Era el centro de una maquinaria que no podía permitirse fallar. A los 11 años, él era el sustento económico de una familia de diez personas y el pilar de un imperio discográfico.', meaning: 'La presión era "absoluta". Michael empezó a desarrollar una hiper-vigilancia y una búsqueda de perfección que rozaba la ansiedad. Ya no era Michael; era "el pequeño Michael".', side: 'right', delay: 120 },
+                            { year: '1972', title: '"Ben": Un canto a la amistad', text: 'El espejo de la soledad. Cuando un niño solo puede ser él mismo ante un animal.', deepContext: 'Originalmente escrita para la secuela de una película de terror sobre ratas, Michael transformó "Ben" en algo profundamente personal. Para él, Ben no era una rata; era el concepto de alguien que te acepta sin pedirte un hit a cambio. Es el año de su primer éxito masivo como solista. Mientras el mundo celebraba su voz, él cantaba "If you ever look behind and don\'t like what you find", una confesión directa de su soledad. Fue su primer grito de auxilio disfrazado de balada pop.', meaning: '', side: 'left', delay: 240 },
+                            { year: '1974', title: 'El reflejo en el espejo', text: 'La fragmentación de la identidad. El inicio de la lucha con su propia imagen.', deepContext: 'En plena adolescencia, Joe Jackson comenzó a burlarse cruelmente de las facciones de Michael, especialmente de su nariz. Estas críticas, en el momento más vulnerable de su desarrollo, crearon una dismorfia que lo perseguiría siempre.', meaning: 'Michael empezó a odiar el espejo. La música seguía siendo su refugio, pero su cuerpo se convirtió en su prisión. "Ben" seguía resonando, pero ahora la soledad era interna.', side: 'right', delay: 360 },
+                        ].map((item) => {
+                            const isExpanded = expandedCard === item.year;
+                            return (
+                                <article key={item.year} data-scroll="slideUp" data-scroll-delay={String(item.delay)}
+                                    className={`ben-narrative-card ${isExpanded ? 'expanded' : ''}`}
+                                    onClick={() => handleCardClick(item.year)}>
+                                    <time className="ben-narrative-year" dateTime={item.year}>{item.year}</time>
+                                    <h3 className="ben-narrative-title">{item.title}</h3>
+                                    <p className="ben-narrative-text">{item.text}</p>
+                                    <div className="card-content-deep">
+                                        <p className="ben-narrative-context">{item.deepContext}</p>
+                                        {item.meaning && <p className="ben-narrative-meaning">{item.meaning}</p>}
+                                    </div>
+                                </article>
+                            );
+                        })}
+                    </section>
+                </div>
             </section>
         </>
     );

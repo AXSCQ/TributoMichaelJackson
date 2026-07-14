@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mjtributo.codetec.online/sitemap.xml

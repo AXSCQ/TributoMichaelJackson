@@ -2,6 +2,8 @@
 import '../../styles/ben.css';
 import '../../styles/scream.css';
 import ScreamHero from '../../components/Scream/ScreamHero';
+const canonicalURL = 'https://mjtributo.codetec.online/scream/';
+const ogImage = 'https://mjtributo.codetec.online/Scream/confondo.webp';
 ---
 
 <!DOCTYPE html>
@@ -11,15 +13,82 @@ import ScreamHero from '../../components/Scream/ScreamHero';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="canonical" href={canonicalURL} />
 
-    <title>Michael Jackson — "Scream" (1995) | La Armadura Tecnológica</title>
-    <meta name="description" content="Acto III: La Armadura Tecnológica. El video más caro de la historia. Experiencia web con efectos glitch audio-reactivos." />
-    <meta property="og:title" content="Tributo MJ — Scream, 1995" />
-    <meta property="og:description" content="Cuando suena el grito, la pantalla se rompe digitalmente." />
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="2xR89xoxTv8Z60ULdARoFZYTnVjTIcKuAaseubjxPMo" />
+
+    <!-- Primary SEO -->
+    <title>Michael Jackson — "Scream" (1995) | La Armadura Tecnológica · Tributo Interactivo</title>
+    <meta name="description" content="Acto III: Scream (1995). El video más caro de la historia de la música. Una experiencia web con efectos glitch audio-reactivos que captura el grito de Michael Jackson contra la injusticia." />
+    <meta name="keywords" content="Michael Jackson, Scream, 1995, Janet Jackson, video más caro, tributo interactivo, experiencia web, glitch, efectos visuales, Rey del Pop" />
+    <meta name="author" content="Axel CSCQ" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#050505" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tributo Michael Jackson" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content='Michael Jackson — "Scream" (1995) | La Armadura Tecnológica' />
+    <meta property="og:description" content="El video más caro en la historia de la música. Acto III: cuando el grito de MJ rompe la pantalla digitalmente. Experiencia glitch audio-reactiva." />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content='Michael Jackson — "Scream" (1995) | Tributo Interactivo' />
+    <meta name="twitter:description" content="Cuando suena el grito, la pantalla se rompe. Experiencia glitch inmersiva en homenaje al Rey del Pop." />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": 'Michael Jackson — "Scream" | Tributo Interactivo',
+        "url": canonicalURL,
+        "description": "Experiencia web glitch audio-reactiva dedicada a Scream (1995).",
+        "inLanguage": "es",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Tributo Michael Jackson",
+            "url": "https://mjtributo.codetec.online/"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Axel CSCQ",
+            "url": "https://axscq.netlify.app/"
+        },
+        "about": {
+            "@type": "MusicRecording",
+            "name": "Scream",
+            "byArtist": [
+                { "@type": "MusicGroup", "name": "Michael Jackson" },
+                { "@type": "MusicGroup", "name": "Janet Jackson" }
+            ],
+            "datePublished": "1995",
+            "inAlbum": "HIStory: Past, Present and Future, Book I"
+        }
+    })} />
 
     <link rel="preload" href="/Scream/master.mp3" as="audio" type="audio/mpeg" />
 </head>
 <body class="theme-dark">
     <ScreamHero client:only="react" />
+
+    <!-- Portfolio credit — subtle footer -->
+    <footer style="position:fixed;bottom:1rem;right:1.2rem;z-index:9999;opacity:0;transition:opacity 0.4s;" 
+            onmouseenter="this.style.opacity='1'" 
+            onmouseleave="this.style.opacity='0'">
+        <a href="https://axscq.netlify.app/" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           style="font-size:0.6rem;color:rgba(212,175,55,0.55);text-decoration:none;letter-spacing:0.08em;font-family:monospace;">
+            ✦ axscq.dev
+        </a>
+    </footer>
 </body>
 </html>
