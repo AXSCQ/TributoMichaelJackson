@@ -39,7 +39,6 @@ export default function BenHero() {
     const titleWordRef = useRef<HTMLSpanElement>(null);
     const bassVigRef = useRef<HTMLDivElement>(null);
     const ripplePoolRef = useRef<HTMLDivElement>(null);
-    const canvasRef = useRef<HTMLCanvasElement>(null);
     const canvasWrapRef = useRef<HTMLDivElement>(null);
     const lyricRef = useRef<HTMLParagraphElement>(null);
     const quoteRef = useRef<HTMLQuoteElement>(null);
@@ -71,16 +70,45 @@ export default function BenHero() {
     });
 
     // ── SonicWave setup — plata metálica (violines 70s) ─────────
+    // API de sonicwave 1.0.0 (la del package-lock): `container` + load(); el
+    // canvas lo crea la librería. La onda es la del stem de violines (other).
+    // 1.0.0 reparte las barras con el ancho del momento de load(), así que si
+    // cambia el ancho se rehace (el mp3 ya viene de la caché).
     const setupWave = useCallback(() => {
-        if (!canvasRef.current) return;
-        try {
-            waveRef.current = SonicWave.createWaveform({
-                canvas: canvasRef.current,
-                color: '#A8ACBA',   // plata metálica — elegancia 70s
-                lineWidth: 1.5,
-                style: 'sine', amplitude: 0.12, speed: 0.003,
-            });
-        } catch { /* degrade */ }
+        const wrap = canvasWrapRef.current;
+        if (!wrap) return () => { };
+        let builtWidth = -1;
+        let timer = 0;
+        const build = () => {
+            waveRef.current?.destroy?.();
+            waveRef.current = null;
+            builtWidth = wrap.clientWidth;
+            if (!builtWidth) return;
+            try {
+                const wave = SonicWave.createWaveform({
+                    container: wrap,
+                    waveColor: '#A8ACBA',       // plata metálica — elegancia 70s
+                    progressColor: '#8D6E63',   // lo ya sonado, en sepia
+                    cursorColor: '#5D4037', cursorWidth: 1,
+                    barWidth: 2, barGap: 2, barRadius: 1,
+                });
+                waveRef.current = wave;
+                wave.load('/Ben/other.mp3').catch(() => { /* degrade */ });
+            } catch { /* degrade */ }
+        };
+        build();
+        const ro = new ResizeObserver(() => {
+            if (wrap.clientWidth === builtWidth) return;   // la altura la anima el rAF
+            clearTimeout(timer);
+            timer = window.setTimeout(build, 250);
+        });
+        ro.observe(wrap);
+        return () => {
+            clearTimeout(timer);
+            ro.disconnect();
+            waveRef.current?.destroy?.();
+            waveRef.current = null;
+        };
     }, []);
 
     // ── Bass ripple emitter ───────────────────────────────────────
@@ -149,7 +177,7 @@ export default function BenHero() {
         }
 
         // ── 4. SonicWave ──────────────────────────────────────────
-        setupWave();
+        const teardownWave = setupWave();
 
         // ── 5. SonicScroll ────────────────────────────────────────
         const scroll = SonicScroll.create({ once: true, threshold: 0.15 });
@@ -202,6 +230,7 @@ export default function BenHero() {
         // ── 7. Main rAF loop ──────────────────────────────────────
         const DAMP = { water: 0.055, med: 0.10, snap: 0.55 };
         let lastBassTransient = 0;
+        let lastWaveTime = -1;
 
         throttler.start((_delta: number) => {
             const r = st.current.raw;
@@ -339,8 +368,10 @@ export default function BenHero() {
 
             // ─ OTHER/VIOLINES → SonicWave intensa + canvas sube alto ─
             s.otherAmp = damp(s.otherAmp, r.other, DAMP.water);
-            if (waveRef.current?.setAmplitude) {
-                waveRef.current.setAmplitude(s.otherAmp * 1.4);   // 0.7 → 1.4 doble
+            const t = sonic.currentTime;
+            if (waveRef.current && t !== lastWaveTime) {
+                lastWaveTime = t;
+                waveRef.current.setTime(t);   // avance de la canción sobre la onda
             }
             if (canvasWrapRef.current) {
                 const targetH = 80 + s.otherAmp * (VH * 0.45 - 80); // sube hasta 45vh
@@ -389,7 +420,7 @@ export default function BenHero() {
             fx.destroy();
             overlay?.destroy?.();
             scroll.destroy();
-            waveRef.current?.destroy?.();
+            teardownWave();
             lyrics?.destroy?.();
         };
     }, [setupWave, emitRipple]);
@@ -474,10 +505,8 @@ export default function BenHero() {
                         {/* Year watermark */}
                         <span className="ben-year" ref={yearRef} aria-hidden="true">1972</span>
 
-                        {/* Violin SonicWave — rising canvas */}
-                        <div className="ben-wave-wrap" ref={canvasWrapRef} aria-hidden="true">
-                            <canvas ref={canvasRef} className="ben-wave-canvas" />
-                        </div>
+                        {/* Violin SonicWave — rising canvas (lo crea SonicWave) */}
+                        <div className="ben-wave-wrap" ref={canvasWrapRef} aria-hidden="true" />
 
                         <div className="ben-content">
                             <p className="ben-act">Acto I · 1972</p>
