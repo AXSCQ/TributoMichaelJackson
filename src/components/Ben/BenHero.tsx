@@ -93,7 +93,12 @@ export default function BenHero() {
                     barWidth: 2, barGap: 2, barRadius: 1,
                 });
                 waveRef.current = wave;
-                wave.load('/Ben/other.mp3').catch(() => { /* degrade */ });
+                // envolvente precalculada (7 KB): load() bajaba y decodificaba
+                // other.mp3 entero (6,7 MB) solo para dibujar la onda
+                fetch('/Ben/other-peaks.json')
+                    .then((r) => r.json())
+                    .then(({ peaks, duration }) => wave.setPeaks(peaks, duration))
+                    .catch(() => { /* degrade */ });
             } catch { /* degrade */ }
         };
         build();
@@ -170,11 +175,9 @@ export default function BenHero() {
         const throttler = SonicPerf.createThrottler({ targetFPS: mobile ? 30 : 60, useIdleCallback: false });
         throttlerRef.current = throttler;
         const lazyLoader = SonicPerf.createLazyLoader();
-        if ('requestIdleCallback' in window) {
-            (window as any).requestIdleCallback(() => {
-                lazyLoader.preload('/BillieJean/master.mp3', 'prefetch');
-            }, { timeout: 5000 });
-        }
+        // el audio del Acto II se adelanta solo si el puntero va hacia su enlace
+        // (antes se bajaban 4,7 MB en cada visita a la portada)
+        lazyLoader.preloadOnHover('a[href^="/billie-jean"]', '/BillieJean/master.mp3');
 
         // ── 4. SonicWave ──────────────────────────────────────────
         const teardownWave = setupWave();
