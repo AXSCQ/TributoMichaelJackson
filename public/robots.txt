@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mjtributo.codetec.online/sitemap.xml
+Sitemap: https://tributo.codetec.app/sitemap.xml

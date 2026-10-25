@@ -1,8 +1,8 @@
 ---
 import '../styles/ben.css';
 import BenHero from '../components/Ben/BenHero';
-const canonicalURL = 'https://mjtributo.codetec.online/';
-const ogImage = 'https://mjtributo.codetec.online/Ben/ben.webp';
+const canonicalURL = 'https://tributo.codetec.app/';
+const ogImage = 'https://tributo.codetec.app/og/ben.jpg';
 ---
 
 <!DOCTYPE html>
@@ -33,6 +33,7 @@ const ogImage = 'https://mjtributo.codetec.online/Ben/ben.webp';
     <meta property="og:title" content='Michael Jackson — "Ben" (1972) | La Inocencia Aislada' />
     <meta property="og:description" content="Una experiencia web audio-reactiva e inmersiva. La historia de cómo Michael Jackson, a los 14 años, cantó su propia soledad disfrazada de balada pop." />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Michael Jackson a los 14 años cantando «Ben» en 1972" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="es_ES" />
@@ -42,6 +43,7 @@ const ogImage = 'https://mjtributo.codetec.online/Ben/ben.webp';
     <meta name="twitter:title" content='Michael Jackson — "Ben" (1972) | Tributo Interactivo' />
     <meta name="twitter:description" content="Una experiencia web inmersiva y audio-reactiva. La tecnología Sonic no se ve, se siente." />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Michael Jackson a los 14 años cantando «Ben» en 1972" />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -54,7 +56,7 @@ const ogImage = 'https://mjtributo.codetec.online/Ben/ben.webp';
         "author": {
             "@type": "Person",
             "name": "Axel CSCQ",
-            "url": "https://axscq.netlify.app/"
+            "url": "https://axscq.codetec.app/"
         },
         "about": {
             "@type": "MusicRecording",
@@ -70,15 +72,27 @@ const ogImage = 'https://mjtributo.codetec.online/Ben/ben.webp';
     <!-- Performance hints -->
     <link rel="preload" href="/Ben/master.mp3" as="audio" type="audio/mpeg" />
     <link rel="preload" href="/Ben/bensinfondo.png" as="image" />
+    <style>
+        .seo-intro { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    </style>
 </head>
 <body>
+    <header class="seo-intro">
+        <h1>Michael Jackson — «Ben» (1972): tributo interactivo</h1>
+        <p>Acto I: Ben (1972). Una experiencia web audio-reactiva e inmersiva que explora la soledad y genialidad de Michael Jackson a los 14 años. Música, historia y tecnología en un solo tributo.</p>
+        <nav aria-label="Actos del tributo">
+            <a href="/">Acto I: Ben (1972)</a>
+            <a href="/billie-jean/">Acto II: Billie Jean (1982)</a>
+            <a href="/scream/">Acto III: Scream (1995)</a>
+        </nav>
+    </header>
     <BenHero client:only="react" />
 
     <!-- Portfolio credit — subtle footer -->
     <footer style="position:fixed;bottom:1rem;right:1.2rem;z-index:9999;opacity:0;transition:opacity 0.4s;" 
             onmouseenter="this.style.opacity='1'" 
             onmouseleave="this.style.opacity='0'">
-        <a href="https://axscq.netlify.app/" 
+        <a href="https://axscq.codetec.app/" 
            target="_blank" 
            rel="noopener noreferrer"
            style="font-size:0.6rem;color:rgba(212,175,55,0.55);text-decoration:none;letter-spacing:0.08em;font-family:monospace;">

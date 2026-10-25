@@ -2,8 +2,8 @@
 import '../../styles/ben.css';
 import '../../styles/scream.css';
 import ScreamHero from '../../components/Scream/ScreamHero';
-const canonicalURL = 'https://mjtributo.codetec.online/scream/';
-const ogImage = 'https://mjtributo.codetec.online/Scream/confondo.webp';
+const canonicalURL = 'https://tributo.codetec.app/scream/';
+const ogImage = 'https://tributo.codetec.app/og/scream.jpg';
 ---
 
 <!DOCTYPE html>
@@ -34,6 +34,7 @@ const ogImage = 'https://mjtributo.codetec.online/Scream/confondo.webp';
     <meta property="og:title" content='Michael Jackson — "Scream" (1995) | La Armadura Tecnológica' />
     <meta property="og:description" content="El video más caro en la historia de la música. Acto III: cuando el grito de MJ rompe la pantalla digitalmente. Experiencia glitch audio-reactiva." />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Michael Jackson en el video de «Scream» (1995)" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="es_ES" />
@@ -43,6 +44,7 @@ const ogImage = 'https://mjtributo.codetec.online/Scream/confondo.webp';
     <meta name="twitter:title" content='Michael Jackson — "Scream" (1995) | Tributo Interactivo' />
     <meta name="twitter:description" content="Cuando suena el grito, la pantalla se rompe. Experiencia glitch inmersiva en homenaje al Rey del Pop." />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Michael Jackson en el video de «Scream» (1995)" />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -55,12 +57,12 @@ const ogImage = 'https://mjtributo.codetec.online/Scream/confondo.webp';
         "isPartOf": {
             "@type": "WebSite",
             "name": "Tributo Michael Jackson",
-            "url": "https://mjtributo.codetec.online/"
+            "url": "https://tributo.codetec.app/"
         },
         "author": {
             "@type": "Person",
             "name": "Axel CSCQ",
-            "url": "https://axscq.netlify.app/"
+            "url": "https://axscq.codetec.app/"
         },
         "about": {
             "@type": "MusicRecording",
@@ -75,15 +77,27 @@ const ogImage = 'https://mjtributo.codetec.online/Scream/confondo.webp';
     })} />
 
     <link rel="preload" href="/Scream/master.mp3" as="audio" type="audio/mpeg" />
+    <style>
+        .seo-intro { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    </style>
 </head>
 <body class="theme-dark">
+    <header class="seo-intro">
+        <h1>Michael Jackson — «Scream» (1995): tributo interactivo</h1>
+        <p>Acto III: Scream (1995). El video más caro de la historia de la música. Una experiencia web con efectos glitch audio-reactivos que captura el grito de Michael Jackson contra la injusticia.</p>
+        <nav aria-label="Actos del tributo">
+            <a href="/">Acto I: Ben (1972)</a>
+            <a href="/billie-jean/">Acto II: Billie Jean (1982)</a>
+            <a href="/scream/">Acto III: Scream (1995)</a>
+        </nav>
+    </header>
     <ScreamHero client:only="react" />
 
     <!-- Portfolio credit — subtle footer -->
     <footer style="position:fixed;bottom:1rem;right:1.2rem;z-index:9999;opacity:0;transition:opacity 0.4s;" 
             onmouseenter="this.style.opacity='1'" 
             onmouseleave="this.style.opacity='0'">
-        <a href="https://axscq.netlify.app/" 
+        <a href="https://axscq.codetec.app/" 
            target="_blank" 
            rel="noopener noreferrer"
            style="font-size:0.6rem;color:rgba(212,175,55,0.55);text-decoration:none;letter-spacing:0.08em;font-family:monospace;">

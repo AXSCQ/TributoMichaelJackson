@@ -3,8 +3,8 @@ import '../../styles/ben.css';
 import '../../styles/billiejean.css';
 import BillieJeanHero from '../../components/BillieJean/BillieJeanHero';
 import BillieJeanNarrative from '../../components/BillieJean/BillieJeanNarrative';
-const canonicalURL = 'https://mjtributo.codetec.online/billie-jean/';
-const ogImage = 'https://mjtributo.codetec.online/BillieJean/billejean.webp';
+const canonicalURL = 'https://tributo.codetec.app/billie-jean/';
+const ogImage = 'https://tributo.codetec.app/og/billie-jean.jpg';
 ---
 
 <!DOCTYPE html>
@@ -35,6 +35,7 @@ const ogImage = 'https://mjtributo.codetec.online/BillieJean/billejean.webp';
     <meta property="og:title" content='Michael Jackson — "Billie Jean" (1982) | El Trono del Ritmo' />
     <meta property="og:description" content="El bajo más reconocible de la historia de la música. Acto II de una experiencia web audio-reactiva en homenaje al Rey del Pop." />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Michael Jackson interpretando «Billie Jean»" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="es_ES" />
@@ -44,6 +45,7 @@ const ogImage = 'https://mjtributo.codetec.online/BillieJean/billejean.webp';
     <meta name="twitter:title" content='Michael Jackson — "Billie Jean" (1982) | Tributo Interactivo' />
     <meta name="twitter:description" content="El bajo más reconocible de la historia reacciona a cada nota. Experiencia web inmersiva." />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Michael Jackson interpretando «Billie Jean»" />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -56,12 +58,12 @@ const ogImage = 'https://mjtributo.codetec.online/BillieJean/billejean.webp';
         "isPartOf": {
             "@type": "WebSite",
             "name": "Tributo Michael Jackson",
-            "url": "https://mjtributo.codetec.online/"
+            "url": "https://tributo.codetec.app/"
         },
         "author": {
             "@type": "Person",
             "name": "Axel CSCQ",
-            "url": "https://axscq.netlify.app/"
+            "url": "https://axscq.codetec.app/"
         },
         "about": {
             "@type": "MusicRecording",
@@ -76,8 +78,20 @@ const ogImage = 'https://mjtributo.codetec.online/BillieJean/billejean.webp';
     })} />
 
     <link rel="preload" href="/BillieJean/master.mp3" as="audio" type="audio/mpeg" />
+    <style>
+        .seo-intro { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    </style>
 </head>
 <body class="theme-dark">
+    <header class="seo-intro">
+        <h1>Michael Jackson — «Billie Jean» (1982): tributo interactivo</h1>
+        <p>Acto II: Billie Jean (1982). La historia detrás de la canción más icónica de Michael Jackson. Experiencia web audio-reactiva donde el bajo legendario cobra vida visual.</p>
+        <nav aria-label="Actos del tributo">
+            <a href="/">Acto I: Ben (1972)</a>
+            <a href="/billie-jean/">Acto II: Billie Jean (1982)</a>
+            <a href="/scream/">Acto III: Scream (1995)</a>
+        </nav>
+    </header>
     <!-- Navbar rendered by React component (BillieJeanHero includes it) -->
     <BillieJeanHero client:only="react" />
     <BillieJeanNarrative client:visible />
@@ -86,7 +100,7 @@ const ogImage = 'https://mjtributo.codetec.online/BillieJean/billejean.webp';
     <footer style="position:fixed;bottom:1rem;right:1.2rem;z-index:9999;opacity:0;transition:opacity 0.4s;" 
             onmouseenter="this.style.opacity='1'" 
             onmouseleave="this.style.opacity='0'">
-        <a href="https://axscq.netlify.app/" 
+        <a href="https://axscq.codetec.app/" 
            target="_blank" 
            rel="noopener noreferrer"
            style="font-size:0.6rem;color:rgba(212,175,55,0.55);text-decoration:none;letter-spacing:0.08em;font-family:monospace;">
