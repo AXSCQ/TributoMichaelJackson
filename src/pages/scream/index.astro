@@ -4,6 +4,10 @@ import '../../styles/scream.css';
 import ScreamHero from '../../components/Scream/ScreamHero';
 const canonicalURL = 'https://tributo.codetec.app/scream/';
 const ogImage = 'https://tributo.codetec.app/og/scream.jpg';
+
+// Analíticas (ver el comentario junto a </head>)
+const UMAMI_ID = '4d5e3d90-97b6-4cca-8712-b70ebe8db2e4';
+const GA_ID = '';
 ---
 
 <!DOCTYPE html>
@@ -79,6 +83,10 @@ const ogImage = 'https://tributo.codetec.app/og/scream.jpg';
     <style>
         .seo-intro { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
     </style>
+  <!-- Analíticas: Umami propio (pulso.codetec.app, sin cookies) y Google Analytics si hay GA_ID -->
+  <script defer src="https://pulso.codetec.app/p.js" data-website-id={UMAMI_ID}></script>
+  {GA_ID && <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>}
+  {GA_ID && <script is:inline define:vars={{ GA_ID }}>window.dataLayer = window.dataLayer || []; function gtag(){ dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', GA_ID);</script>}
 </head>
 <body class="theme-dark">
     <header class="seo-intro">
